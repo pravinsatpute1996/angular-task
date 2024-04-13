@@ -61,17 +61,17 @@
 
    <div class="row">
         <div class="col">
-          <label for="number" class="form-label">Number</label>
-          <input type="number" id="number" name="name" formControlName="name" placeholder="Your name" required minlength="1" maxlength="250" class="form-control form-control-sm" [class.is-invalid]="name.invalid && (name.dirty || name.touched)">
-          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
-            <div *ngIf="name.errors?.['required']">
-              number is required.
+          <label for="phone" class="form-label">phone</label>
+          <input type="phone" id="phone" name="phone" formControlName="phone" placeholder="Your phone" required minlength="1" maxlength="250" class="form-control form-control-sm" [class.is-invalid]="phone.invalid && (phone.dirty || phone.touched)">
+          <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="invalid-feedback">
+            <div *ngIf="phone.errors?.['required']">
+              phone is required.
             </div>
-            <div *ngIf="name.errors?.['minlength']">
-              number must have at least 1 character.
+            <div *ngIf="phone.errors?.['minlength']">
+              phone must have at least 1 character.
             </div>
-            <div *ngIf="name.errors?.['maxlength']">
-              number must have at most 250 characters.
+            <div *ngIf="phone.errors?.['maxlength']">
+              phone must have at most 250 characters.
             </div>
           </div>
         </div>
@@ -114,10 +114,10 @@
 
    <div class="row">
         <div class="col">
-          <label for="datefield" class="form-label">date</label>
-          <input type="date" id="datefield" name="datefield" formControlName="datefield" required class="form-control form-control-sm" [class.is-invalid]="datefield.invalid && (datefield.dirty || datefield.touched)">
-          <div *ngIf="datefield.invalid && (datefield.dirty || datefield.touched)" class="invalid-feedback">
-            <div *ngIf="datefield.errors?.['required']">
+          <label for="dob" class="form-label">date</label>
+          <input type="date" id="dob" name="dob" formControlName="dob" required class="form-control form-control-sm" [class.is-invalid]="dob.invalid && (dob.dirty || dob.touched)">
+          <div *ngIf="dob.invalid && (dob.dirty || dob.touched)" class="invalid-feedback">
+            <div *ngIf="dob.errors?.['required']">
               Date is required.
             </div>
 

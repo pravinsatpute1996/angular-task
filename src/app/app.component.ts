@@ -7,13 +7,13 @@ import { Dboperations } from './db-operations';
 
 interface IUser {
   name: string;
-  number: number;
+  phone: number;
   email: string;
   password: string;
   gender: boolean;
   company: string;
-  date: string;
-  datefield: string;
+  // date: string;
+  dob: string;
 }
 
 @Component({
@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
         Validators.minLength(1),
         Validators.maxLength(250),
       ]),
-        datefield: new FormControl(this.user.datefield, [
+        dob: new FormControl(this.user.dob, [
         Validators.required,
         Validators.minLength(1),
         Validators.maxLength(250),
@@ -50,9 +50,9 @@ export class AppComponent implements OnInit {
         Validators.required,
 
       ]),
-      nickname: new FormControl(this.user.number, [
-        Validators.maxLength(10),
-      ]),
+      // nickname: new FormControl(this.user.number, [
+      //   Validators.maxLength(10),
+      // ]),
       company: new FormControl(this.user.company, [
         Validators.maxLength(10),
       ]),
@@ -62,16 +62,16 @@ export class AppComponent implements OnInit {
         Validators.maxLength(250),
         emailValidator(),
       ]),
-       number: new FormControl(this.user.number, [
+       phone: new FormControl(this.user.phone, [
         Validators.required,
         Validators.minLength(1),
         Validators.maxLength(250),
 
        ]),
-        date: new FormControl(this.user.date, [
-        Validators.required,
+      //   date: new FormControl(this.user.date, [
+      //   Validators.required,
 
-      ]),
+      // ]),
       password: new FormControl(this.user.password, [
         Validators.required,
         Validators.minLength(15),
@@ -83,8 +83,8 @@ export class AppComponent implements OnInit {
     return this.reactiveForm.get('name')!;
   }
 
-  get number() {
-    return this.reactiveForm.get('number')!;
+  get phone() {
+    return this.reactiveForm.get('phone')!;
   }
 
   get email() {
@@ -96,14 +96,15 @@ export class AppComponent implements OnInit {
   }
 get company() {
     return this.reactiveForm.get('company')!;
-}get date() {
-    return this.reactiveForm.get('date')!;
 }
+// get date() {
+//     return this.reactiveForm.get('date')!;
+// }
   get gender() {
     return this.reactiveForm.get('gender')!;
   }
-    get datefield() {
-    return this.reactiveForm.get('datefield')!;
+    get dob() {
+    return this.reactiveForm.get('dob')!;
   }
   public validate(): void {
     console.log(this.reactiveForm.value)
@@ -119,7 +120,7 @@ get company() {
     console.info('company:', this.user.company);
     console.info('Name:', this.user.name);
     console.info('Gender:', this.user.gender);
-    console.info('Number:', this.user.number);
+    console.info('phone:', this.user.phone);
     console.info('Email:', this.user.email);
     console.info('Password:', this.user.password);
 
