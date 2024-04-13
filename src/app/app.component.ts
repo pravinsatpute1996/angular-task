@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { emailValidator } from './email-validator.directive';
 import { UserserviceService } from './userservice.service';
+import { Dboperations } from './db-operations';
 
 interface IUser {
   name: string;
@@ -11,7 +12,7 @@ interface IUser {
   password: string;
   gender: boolean;
   company: string;
-  date: Date;
+  date: string;
   datefield: string;
 }
 
@@ -24,13 +25,16 @@ export class AppComponent implements OnInit {
   userss:any=[]
   reactiveForm!: FormGroup;
   user: IUser;
-
+  buttontxt:string="submit"
+  dbops:Dboperations = 1;
   constructor(private myservise:UserserviceService) {
     this.user = {} as IUser;
   }
 
   ngOnInit(): void {
     this.getalluser();
+     this.buttontxt = "submit";
+   this.dbops = Dboperations.create;
     this.reactiveForm = new FormGroup({
       name: new FormControl(this.user.name, [
         Validators.required,
@@ -102,6 +106,7 @@ get company() {
     return this.reactiveForm.get('datefield')!;
   }
   public validate(): void {
+    console.log(this.reactiveForm.value)
     if (this.reactiveForm.invalid) {
       for (const control of Object.keys(this.reactiveForm.controls)) {
         this.reactiveForm.controls[control].markAsTouched();
@@ -117,9 +122,29 @@ get company() {
     console.info('Number:', this.user.number);
     console.info('Email:', this.user.email);
     console.info('Password:', this.user.password);
+
+
+    switch(this.dbops){
+      case Dboperations.create:
+       this.myservise.adduser(this.reactiveForm.value).subscribe(res=>{
+        this.getalluser();
+         this.reset();
+       })
+      break;
+      case Dboperations.update:
+        this.myservise.updateuser(this.reactiveForm.value).subscribe(res=>{
+        this.getalluser();
+         this.reset();
+       })
+      break;
+    }
+
+
   }
   public reset(): void{
-      this.reactiveForm.reset()
+      this.reactiveForm.reset();
+         this.buttontxt = "submit";
+   this.dbops = Dboperations.create;
 }
 getalluser(){
   this.myservise.getuser().subscribe(res => {
@@ -127,5 +152,17 @@ getalluser(){
     console.log(res);
     this.userss=res
   })
+}
+  Edit(userId:number) {
+    this.buttontxt = "update";
+   this.dbops = Dboperations.update;
+}
+delet(userssId:number){
+this.myservise.deleteuser(userssId).subscribe(res => {
+  this.getalluser()
+})
+}
+  setfromstate() {
+    
 }
 }
