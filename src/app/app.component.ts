@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { usersdata } from './user-interface';
 import { emailValidator } from './email-validator.directive';
 import { UserserviceService } from './userservice.service';
 import { Dboperations } from './db-operations';
@@ -157,6 +157,9 @@ getalluser(){
   Edit(userId:number) {
     this.buttontxt = "update";
    this.dbops = Dboperations.update;
+
+   let User=this.userss.find((u:usersdata)=>u.id==userId);
+   this.reactiveForm.patchValue(User)
 }
 delet(userssId:number){
 this.myservise.deleteuser(userssId).subscribe(res => {

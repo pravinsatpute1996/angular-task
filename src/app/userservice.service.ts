@@ -16,8 +16,8 @@ SERVER_URL: string = "http://localhost:4200/api/"
   adduser(user:usersdata){
 return  this.http.post(`${this.SERVER_URL}users`,user)
   }
-    updateuser(user:usersdata){
-return  this.http.put(`${this.SERVER_URL}users/${user.id}`,user)
+    updateuser(userId:number){
+return  this.http.put(`${this.SERVER_URL}users/${userId}`,{})
   }
   deleteuser(userId:number){
       return this.http.delete(`${this.SERVER_URL}users/${userId}`)
