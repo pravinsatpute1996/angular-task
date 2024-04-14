@@ -7,9 +7,12 @@ import { Dboperations } from './db-operations';
 
 interface IUser {
   name: string;
+  firstname: string;
+  lastname: string;
   phone: number;
   email: string;
   password: string;
+  cpassword: string;
   gender: boolean;
   company: string;
   // date: string;
@@ -36,7 +39,17 @@ export class AppComponent implements OnInit {
      this.buttontxt = "submit";
    this.dbops = Dboperations.create;
     this.reactiveForm = new FormGroup({
-      name: new FormControl(this.user.name, [
+      // name: new FormControl(this.user.name, [
+      //   Validators.required,
+      //   Validators.minLength(1),
+      //   Validators.maxLength(250),
+      // ]),
+      firstname: new FormControl(this.user.firstname, [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(250),
+      ]),
+      lastname: new FormControl(this.user.lastname, [
         Validators.required,
         Validators.minLength(1),
         Validators.maxLength(250),
@@ -76,13 +89,22 @@ export class AppComponent implements OnInit {
         Validators.required,
         Validators.minLength(15),
       ]),
+      cpassword: new FormControl(this.user.cpassword, [
+        Validators.required,
+        Validators.minLength(15),
+      ]),
     });
   }
 
-  get name() {
-    return this.reactiveForm.get('name')!;
+  // get name() {
+  //   return this.reactiveForm.get('name')!;
+  // }
+ get firstname() {
+    return this.reactiveForm.get('firstname')!;
   }
-
+  get lastname() {
+    return this.reactiveForm.get('lastname')!;
+  }
   get phone() {
     return this.reactiveForm.get('phone')!;
   }
@@ -93,6 +115,9 @@ export class AppComponent implements OnInit {
 
   get password() {
     return this.reactiveForm.get('password')!;
+  }
+   get cpassword() {
+    return this.reactiveForm.get('cpassword')!;
   }
 get company() {
     return this.reactiveForm.get('company')!;
@@ -118,12 +143,14 @@ get company() {
     this.user = this.reactiveForm.value;
 
     console.info('company:', this.user.company);
-    console.info('Name:', this.user.name);
+      console.info('firstname:', this.user.firstname);
+      console.info('lastname:', this.user.lastname);
+    // console.info('Name:', this.user.name);
     console.info('Gender:', this.user.gender);
     console.info('phone:', this.user.phone);
     console.info('Email:', this.user.email);
     console.info('Password:', this.user.password);
-
+         console.info('cPassword:', this.user.cpassword);
 
     switch(this.dbops){
       case Dboperations.create:

@@ -13,11 +13,11 @@ SERVER_URL: string = "http://localhost:4200/api/"
   getusers(userId:number){
      return this.http.get(`${this.SERVER_URL}users/${userId}`)
   }
-  adduser(user:usersdata){
-return  this.http.post(`${this.SERVER_URL}users`,user)
+  adduser(users:usersdata){
+return  this.http.post(`${this.SERVER_URL}users`,users)
   }
-    updateuser(userId:number){
-return  this.http.put(`${this.SERVER_URL}users/${userId}`,{})
+    updateuser(users:usersdata){
+return  this.http.put(`${this.SERVER_URL}users/${users.id}`,users)
   }
   deleteuser(userId:number){
       return this.http.delete(`${this.SERVER_URL}users/${userId}`)
