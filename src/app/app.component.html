@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col">
           <label for="firstname" class="form-label">First Name:</label>
-          <input type="text" id="firstname" name="firstname" formControlName="firstname" placeholder="Your name" required minlength="1" maxlength="250" class="form-control form-control-sm" [class.is-invalid]="firstname.invalid && (firstname.dirty || firstname.touched)">
+          <input type="text" id="firstname" name="firstname" formControlName="firstname" placeholder="Your First name" required minlength="1" maxlength="250" class="form-control form-control-sm" [class.is-invalid]="firstname.invalid && (firstname.dirty || firstname.touched)">
           <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="invalid-feedback">
             <div *ngIf="firstname.errors?.['required']">
               First is required.
@@ -24,7 +24,7 @@
        <div class="row">
         <div class="col">
           <label for="lastname" class="form-label">Last Name:</label>
-          <input type="text" id="lastname" name="lastname" formControlName="lastname" placeholder="Your name" required minlength="1" maxlength="250" class="form-control form-control-sm" [class.is-invalid]="lastname.invalid && (lastname.dirty || lastname.touched)">
+          <input type="text" id="lastname" name="lastname" formControlName="lastname" placeholder="Your Last name" required minlength="1" maxlength="250" class="form-control form-control-sm" [class.is-invalid]="lastname.invalid && (lastname.dirty || lastname.touched)">
           <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="invalid-feedback">
             <div *ngIf="lastname.errors?.['required']">
               Last lastname is required.
@@ -62,7 +62,7 @@
    <div class="row">
         <div class="col">
           <label for="phone" class="form-label">phone</label>
-          <input type="phone" id="phone" name="phone" formControlName="phone" placeholder="Your phone" required minlength="1" maxlength="250" class="form-control form-control-sm" [class.is-invalid]="phone.invalid && (phone.dirty || phone.touched)">
+          <input type="phone" id="phone" name="phone" formControlName="phone" placeholder="Your phone Number" required minlength="1" maxlength="250" class="form-control form-control-sm" [class.is-invalid]="phone.invalid && (phone.dirty || phone.touched)">
           <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="invalid-feedback">
             <div *ngIf="phone.errors?.['required']">
               phone is required.
@@ -78,10 +78,10 @@
       </div>
 
 
-        <div class="row">
+        <div class="row ">
         <div class="col">
-          <label for="id" class="form-label">id</label>
-          <input type="id" id="id" name="id" formControlName="id" placeholder="Your id" required minlength="1" maxlength="250" class="form-control form-control-sm" [class.is-invalid]="id.invalid && (id.dirty || id.touched)">
+          <label for="id" class="form-label">Emp id</label>
+          <input type="id" id="id" name="id" formControlName="id" placeholder="Your emp id" required minlength="1" maxlength="250" class="form-control form-control-sm" [class.is-invalid]="id.invalid && (id.dirty || id.touched)">
           
         </div>
       </div>
@@ -90,7 +90,7 @@
    <div class="row">
         <div class="col">
           <label for="company" class="form-label">Company</label>
-          <input type="text" id="company" name="company" formControlName="company" placeholder="Your name" required minlength="1" maxlength="250" class="form-control form-control-sm" [class.is-invalid]="company.invalid && (company.dirty || company.touched)">
+          <input type="text" id="company" name="company" formControlName="company" placeholder="Your company name" required minlength="1" maxlength="250" class="form-control form-control-sm" [class.is-invalid]="company.invalid && (company.dirty || company.touched)">
           <div *ngIf="company.invalid && (company.dirty || company.touched)" class="invalid-feedback">
             <div *ngIf="company.errors?.['required']">
               Company is required.
