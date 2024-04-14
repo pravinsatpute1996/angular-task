@@ -17,6 +17,7 @@ interface IUser {
   company: string;
   // date: string;
   dob: string;
+  id:number;
 }
 
 @Component({
@@ -39,11 +40,7 @@ export class AppComponent implements OnInit {
      this.buttontxt = "submit";
    this.dbops = Dboperations.create;
     this.reactiveForm = new FormGroup({
-      // name: new FormControl(this.user.name, [
-      //   Validators.required,
-      //   Validators.minLength(1),
-      //   Validators.maxLength(250),
-      // ]),
+      
       firstname: new FormControl(this.user.firstname, [
         Validators.required,
         Validators.minLength(1),
@@ -63,9 +60,7 @@ export class AppComponent implements OnInit {
         Validators.required,
 
       ]),
-      // nickname: new FormControl(this.user.number, [
-      //   Validators.maxLength(10),
-      // ]),
+     
       company: new FormControl(this.user.company, [
         Validators.maxLength(10),
       ]),
@@ -79,12 +74,12 @@ export class AppComponent implements OnInit {
         Validators.required,
         Validators.minLength(1),
         Validators.maxLength(250),
-
        ]),
-      //   date: new FormControl(this.user.date, [
-      //   Validators.required,
-
-      // ]),
+    id: new FormControl(this.user.id, [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(250),
+       ]),
       password: new FormControl(this.user.password, [
         Validators.required,
         Validators.minLength(15),
@@ -95,10 +90,6 @@ export class AppComponent implements OnInit {
       ]),
     });
   }
-
-  // get name() {
-  //   return this.reactiveForm.get('name')!;
-  // }
  get firstname() {
     return this.reactiveForm.get('firstname')!;
   }
@@ -108,11 +99,12 @@ export class AppComponent implements OnInit {
   get phone() {
     return this.reactiveForm.get('phone')!;
   }
-
+get id() {
+    return this.reactiveForm.get('id')!;
+  }
   get email() {
     return this.reactiveForm.get('email')!;
   }
-
   get password() {
     return this.reactiveForm.get('password')!;
   }
@@ -122,9 +114,6 @@ export class AppComponent implements OnInit {
 get company() {
     return this.reactiveForm.get('company')!;
 }
-// get date() {
-//     return this.reactiveForm.get('date')!;
-// }
   get gender() {
     return this.reactiveForm.get('gender')!;
   }
@@ -145,9 +134,8 @@ get company() {
     console.info('company:', this.user.company);
       console.info('firstname:', this.user.firstname);
       console.info('lastname:', this.user.lastname);
-    // console.info('Name:', this.user.name);
     console.info('Gender:', this.user.gender);
-    console.info('phone:', this.user.phone);
+    console.info('phone:', this.user.phone); console.info('id:', this.user.id);
     console.info('Email:', this.user.email);
     console.info('Password:', this.user.password);
          console.info('cPassword:', this.user.cpassword);
@@ -178,7 +166,8 @@ getalluser(){
   this.myservise.getuser().subscribe(res => {
     console.log("Fffffff")
     console.log(res);
-    this.userss=res
+    this.userss = res;
+    
   })
 }
   Edit(userId:number) {
@@ -186,7 +175,9 @@ getalluser(){
    this.dbops = Dboperations.update;
 
    let User=this.userss.find((u:usersdata)=>u.id==userId);
-   this.reactiveForm.patchValue(User)
+   console.log(User)
+    this.reactiveForm.patchValue(User);
+    this.reactiveForm.controls['id'].setValue(User.id);
 }
 delet(userssId:number){
 this.myservise.deleteuser(userssId).subscribe(res => {

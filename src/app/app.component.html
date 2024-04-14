@@ -1,5 +1,5 @@
 <div class="container-fluid py-2">
-<h3 class="m-0">Angular Reactive Form Validation</h3>
+<h3 class="m-0">Angular Task</h3>
 
 <div class="row">
   <div class="col-md-4">
@@ -76,6 +76,17 @@
           </div>
         </div>
       </div>
+
+
+        <div class="row">
+        <div class="col">
+          <label for="id" class="form-label">id</label>
+          <input type="id" id="id" name="id" formControlName="id" placeholder="Your id" required minlength="1" maxlength="250" class="form-control form-control-sm" [class.is-invalid]="id.invalid && (id.dirty || id.touched)">
+          
+        </div>
+      </div>
+
+
    <div class="row">
         <div class="col">
           <label for="company" class="form-label">Company</label>
@@ -96,7 +107,7 @@
 
 
 
-   <div class="row">
+ <div class="row">
         <div class="col">
           <label for="gender" class="form-label"style="margin-right: 12px;">Gender</label>
             <input type="radio" id="gender"style="margin-right: 3px;" name="gender" formControlName="gender" value="male"[class.is-invalid]="gender.invalid && (gender.dirty || gender.touched)"> Male &nbsp;&nbsp;
@@ -109,7 +120,7 @@
 
           </div>
         </div>
-      </div>
+      </div> 
 
 
    <div class="row">
@@ -126,7 +137,7 @@
       </div>
 
 
-      <div class="row">
+     <div class="row">
         <div class="col">
           <label for="password" class="form-label">Password:</label>
           <div class="input-group input-group-sm has-validation">
@@ -162,7 +173,8 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> 
+      
       <div class="row mt-3">
         <div class="col d-grid">
           <button type="button" class="btn btn-sm btn-primary" (click)="validate()">{{buttontxt}}</button>
